@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "marginTop">12dp</dimen>
+    <dimen name = "marginBottom">10dp</dimen>
+    <dimen name = "marginLeft">20dp</dimen>
+    <dimen name = "marginRight">20dp</dimen>
+    <dimen name="marginStart">20dp</dimen>
+    <dimen name="marginEnd">20dp</dimen>
+    <dimen name="textSize">17sp</dimen>
+    <dimen name="layoutWidth">110dp</dimen>
+    <dimen name="layoutHeight">40dp</dimen>
+    <dimen name="nameTop">5dp</dimen>
+    <dimen name="top">10dp</dimen>
+    <dimen name="moodTop">10dp</dimen>
+    <dimen name="colorTop">40dp</dimen>
+    <dimen name= "titleStart">152dp</dimen>
+    <dimen name="agreeStart">30dp</dimen>
+    <dimen name="agreeWidth">80dp</dimen>
+    <dimen name="agreeHeight">60dp</dimen>
+</resources>
