@@ -17,4 +17,6 @@
     <dimen name="agreeStart">30dp</dimen>
     <dimen name="agreeWidth">80dp</dimen>
     <dimen name="agreeHeight">60dp</dimen>
+    <dimen name="pictureEnd">50dp</dimen>
+
 </resources>
