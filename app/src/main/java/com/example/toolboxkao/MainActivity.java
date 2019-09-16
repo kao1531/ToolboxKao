@@ -3,11 +3,13 @@ package com.example.toolboxkao;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
@@ -27,6 +29,28 @@ public class MainActivity extends AppCompatActivity {
         addListenerOnRadioButton();
     }
 
+    public void sendInfo (View v)
+    {
+        // getting a reference to my edit text fields
+        EditText myName = (EditText) findViewById(R.id.editText);
+        EditText myAge = (EditText) findViewById(R.id.editText2);
+
+        // extracting the text from those edit text fields
+        String myNameStr = myName.getText().toString();
+        String myAgeStr = myAge.getText().toString();
+
+        // Creating the intent object so I can send data
+        Intent intent = new Intent(this, Fortune.class);
+
+        // putting data from edit text fields into intent to send to other activity
+        // MY_NAME and MY_AGE are constants in the InfoActivity class
+        intent.putExtra(Fortune.FIRST_NAME, myNameStr);
+        intent.putExtra(Fortune.LAST_NAME, myAgeStr);
+
+        // loads the next activity
+        startActivity(intent);
+    }
+
     /**
      *  https://www.mkyong.com/android/android-imageview-example/
      */
@@ -39,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         angry = (CheckBox) findViewById(R.id.checkBox2);
         relaxed = (CheckBox) findViewById(R.id.checkBox3);
         stressed = (CheckBox) findViewById(R.id.checkBox4);
+
         happy.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v)

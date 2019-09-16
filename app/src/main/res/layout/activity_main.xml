@@ -273,16 +273,16 @@
         android:layout_marginBottom="@dimen/marginBottom"
         android:text="@string/submit"
         android:drawableEnd="@drawable/arrow"
+        android:onClick="sendInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/switch1" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="172dp"
-        android:layout_height="149dp"
+        android:layout_width="@dimen/pictureWidth"
+        android:layout_height="@dimen/pictureWidth"
         android:layout_marginTop="@dimen/marginTop"
         android:layout_marginEnd="@dimen/pictureEnd"
-        android:src="@drawable/ic_action_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
