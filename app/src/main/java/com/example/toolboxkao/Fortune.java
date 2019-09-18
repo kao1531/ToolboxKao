@@ -11,6 +11,7 @@ public class Fortune extends AppCompatActivity {
 
     public static final String LAST_NAME = "last";
     public static final String FIRST_NAME = "first";
+    public static final String YEAR = "year";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,12 @@ public class Fortune extends AppCompatActivity {
         Intent intent = getIntent();
         String lastName = intent.getStringExtra(LAST_NAME);
         String firstName = intent.getStringExtra(FIRST_NAME);
+        String year = intent.getStringExtra(YEAR);
+        int yearNum = Integer.parseInt(year);
+        int age = 2020 - yearNum;
 
         String strToDisplay = firstName + " " + lastName + "'s Fortune Is..." ;
-        String fortuneStr = "Your Identity will be Stolen in the Near Future.";
+        String fortuneStr = "You will turn " + age + " years old next year.";
         TextView str = (TextView) findViewById(R.id.info);
         TextView fortune = (TextView) findViewById(R.id.fortune);
         str.setText(strToDisplay);

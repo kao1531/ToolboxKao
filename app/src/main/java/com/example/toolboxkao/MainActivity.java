@@ -3,6 +3,7 @@ package com.example.toolboxkao;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         addListenerOnCheckbox();
         addListenerOnRadioButton();
+        addListenerOnSwitch();
     }
 
     public void sendInfo (View v)
@@ -34,21 +39,49 @@ public class MainActivity extends AppCompatActivity {
         // getting a reference to my edit text fields
         EditText myName = (EditText) findViewById(R.id.editText);
         EditText myAge = (EditText) findViewById(R.id.editText2);
+        Spinner year = (Spinner) findViewById(R.id.year);
+        Switch s = (Switch) findViewById(R.id.switch1);
+        boolean switchState = s.isChecked();
 
-        // extracting the text from those edit text fields
-        String myNameStr = myName.getText().toString();
-        String myAgeStr = myAge.getText().toString();
+        if (myName.length() == 0 || myAge.length() == 0 || switchState == false)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all fields and agree to terms of service";
+            int duration = Toast.LENGTH_SHORT;
 
-        // Creating the intent object so I can send data
-        Intent intent = new Intent(this, Fortune.class);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        // putting data from edit text fields into intent to send to other activity
-        // MY_NAME and MY_AGE are constants in the InfoActivity class
-        intent.putExtra(Fortune.FIRST_NAME, myNameStr);
-        intent.putExtra(Fortune.LAST_NAME, myAgeStr);
+       /**
+        if (switchState == false)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = "Please agree to the terms of service";
+            int duration = Toast.LENGTH_SHORT;
 
-        // loads the next activity
-        startActivity(intent);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        **/
+        else
+        {
+            // extracting the text from those edit text fields
+            String myNameStr = myName.getText().toString();
+            String myAgeStr = myAge.getText().toString();
+            String yearStr = year.getSelectedItem().toString();
+            // Creating the intent object so I can send data
+            Intent intent = new Intent(this, Fortune.class);
+
+            // putting data from edit text fields into intent to send to other activity
+            // MY_NAME and MY_AGE are constants in the InfoActivity class
+            intent.putExtra(Fortune.FIRST_NAME, myNameStr);
+            intent.putExtra(Fortune.LAST_NAME, myAgeStr);
+            intent.putExtra(Fortune.YEAR, yearStr);
+
+            // loads the next activity
+            startActivity(intent);
+        }
     }
 
     /**
@@ -115,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick (View v)
             {
                 ConstraintLayout layout = findViewById(R.id.constraint);
-                layout.setBackgroundColor(Color.RED);
+                layout.setBackgroundColor(Color.parseColor("#ff4040"));
             }
         });
 
@@ -160,8 +193,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick (View v)
             {
                 ConstraintLayout layout = findViewById(R.id.constraint);
-                layout.setBackgroundColor(Color.parseColor("#9051F5"));
+                layout.setBackgroundColor(Color.parseColor("#C984E7"));
             }
         });
+    }
+
+    public void addListenerOnSwitch ()
+    {
+
     }
 }
